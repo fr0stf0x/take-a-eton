@@ -11,6 +11,6 @@ export interface IInput {
 export interface ICheckBox {
   id?: string;
   label?: string;
-  checked: Boolean;
-  onChange: (value: Boolean) => void;
+  checked?: boolean;
+  onChange: (value: boolean) => void;
 }

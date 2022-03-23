@@ -1,21 +1,11 @@
-import { primaryColor, primaryLightColor, white } from "@/constants/colors";
+import { pink, primaryColor, white } from "@/constants/colors";
 import styled from "styled-components";
 
 export const InputWrapper = styled.div`
   position: relative;
   box-sizing: border-box;
   background-color: ${white};
-  background-color: #fee6e3;
-  /* box-shadow:
-    0.2px 0.3px 1.3px -5px rgba(0, 0, 0, 0.036),
-    0.5px 0.7px 2.6px -5px rgba(0, 0, 0, 0.052),
-    0.8px 1.3px 4px -5px rgba(0, 0, 0, 0.064),
-    1.3px 2px 5.8px -5px rgba(0, 0, 0, 0.075),
-    1.9px 3.1px 8.1px -5px rgba(0, 0, 0, 0.086),
-    3px 4.8px 11.4px -5px rgba(0, 0, 0, 0.098),
-    5px 8px 17px -5px rgba(0, 0, 0, 0.114),
-    10px 16px 32px -5px rgba(0, 0, 0, 0.15)
-  ; */
+  background-color: ${pink};
   border-radius: 0.5rem;
   isolation: isolate;
   transform: translate(-8px, -8px);
@@ -46,8 +36,7 @@ export const InputWrapper = styled.div`
 
   > label {
     position: absolute;
-    background-color: ${white};
-    background-color: #fee6e3;
+    background-color: ${pink};
     padding: 0 0.25rem;
     cursor: text;
     top: 1rem;
@@ -59,9 +48,7 @@ export const InputWrapper = styled.div`
 
   > input,
   > textarea {
-    background-color: ${white};
-    /* border: 1px solid ${primaryColor}; */
-    background-color: #fee6e3;
+    background-color: ${pink};
 
     border: none;
     border-radius: 0.5rem;

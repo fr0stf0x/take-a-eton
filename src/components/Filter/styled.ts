@@ -29,16 +29,16 @@ export const FilterWrapper = styled.div`
     }
   }
 
-  > button {
+  /* > button {
     margin-bottom: 2em;
-  }
+  } */
 `;
 
 export const ButtonGroupWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  margin: 2rem 0;
+  margin: 2rem 0 0;
   > button {
     &:not(:last-child) {
       margin-right: 0.5em;

@@ -8,7 +8,7 @@ import { v4 } from 'uuid';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 `;
 
 const TodoInput = () => {
@@ -36,14 +36,14 @@ const TodoInput = () => {
   }
 
   return (
-    <Wrapper>
+    <div>
       <Input
         value={todo}
         onChange={setTodo}
         onKeyDown={onKeyDown}
         placeholder="+ Add a new to-do"
       />
-    </Wrapper>
+    </div>
   )
 }
 

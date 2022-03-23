@@ -7,10 +7,11 @@ const EmptyWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  height: 100%;
 
   > img {
-    width: 50%;
-    height: auto;
+    height: 300px;
+    width: auto;
   }
 `;
 

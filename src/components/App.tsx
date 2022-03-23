@@ -7,6 +7,10 @@ import Greeting from './Greeting'
 import { Provider } from 'jotai'
 import Background from './Background'
 
+
+// TODO 1.responsive
+// TODO 2.toggle all
+
 function App() {
 
   return (

@@ -25,6 +25,22 @@ const ButtonStyled = styled.button`
     box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
     transform: scale(1.05) rotate(-1deg);
   }
+
+  &.small {
+    padding: .25rem .7rem;
+  }
+
+  &.simple {
+    box-shadow: none;
+    transform: none;
+  }
+
+  &.danger {
+    background-color: #fbc2c2;
+    color: #fd3030;
+    width: 2rem;
+    height: 2rem;
+  }
 `;
 
 const Button: FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({children, ...props}) => {

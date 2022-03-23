@@ -19,6 +19,10 @@ export const CheckBoxWrapper = styled.div`
       padding-left: 2rem;
       justify-content: space-between;
       align-items: center;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;  
+      overflow: hidden;
       transition: all ${animationDuration} ${animationFunction};
 
       &::after {
@@ -28,15 +32,17 @@ export const CheckBoxWrapper = styled.div`
         width: 16px;
         position: absolute;
         left: 0;
+        top: 50%;
         height: 16px;
-        transform: scale(1);
+        transform: scale(1) translateY(-50%);
         transition: all ${animationDuration} ${animationFunction} ${animationDelay};
       }
 
       .checkmark {
         position: absolute;
-        top: 4px;
+        top: 50%;
         left: 2px;
+        transform: translateY(-50%);
         stroke: #c8d4d9;
         fill: none;
         stroke-width: 1.5;
@@ -54,7 +60,7 @@ export const CheckBoxWrapper = styled.div`
 
       &::after {
         border: 1px solid transparent;
-        transform: scale(1.2);
+        transform: scale(1.2) translateY(-50%);
         transition: all ${animationDuration} ${animationFunction};
       }
 
