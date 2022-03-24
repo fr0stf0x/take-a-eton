@@ -1,6 +1,8 @@
-import { ICheckBox } from '@/interfaces/Input';
 import React, { ChangeEvent, FC } from 'react'
 import { v4 } from 'uuid';
+
+import { ICheckBox } from '@/interfaces/Input';
+
 import { CheckBoxWrapper } from './styled';
 
 const CheckBox: FC<ICheckBox> = ({ id, label, checked, onChange }) => {

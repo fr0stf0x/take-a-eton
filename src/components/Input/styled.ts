@@ -8,20 +8,20 @@ export const InputWrapper = styled.div`
   background-color: ${pink};
   border-radius: 0.5rem;
   isolation: isolate;
-  transform: translate(-8px, -8px);
+  transform: translate(-0.5rem, -0.5rem);
   transition: transform .2s ease-out;
   
   &:after {
     background-color: #111;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     content: "";
     display: block;
-    height: 48px;
+    height: 100%;
     left: 0;
     width: 100%;
     position: absolute;
-    top: 4px;
-    transform: translate(12px, 12px);
+    top: 0;
+    transform: translate(0.75rem, 0.75rem);
     transition: transform .2s ease-out;
     z-index: -1;
   }
@@ -44,6 +44,12 @@ export const InputWrapper = styled.div`
     line-height: 1;
     pointer-events: none;
     transition: transform 0.25s ease;
+    display: flex;
+    align-items: center;
+
+    img.input-icon {
+      margin-right: 0.5rem;
+    }
   }
 
   > input,
@@ -63,15 +69,12 @@ export const InputWrapper = styled.div`
     }
 
     &:focus {
-      /* border: 2px solid #00A455; */
       border: 2px solid #111;
       caret-color: #111;
       outline: none;
       outline-offset: 0;
-      /* padding: calc(1rem - 1px); */
 
       + label {
-        /* color: #00A455; */
         color: #111;
       }
     }

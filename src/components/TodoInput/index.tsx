@@ -1,15 +1,12 @@
-import { atom, useSetAtom } from 'jotai';
-import React, { ChangeEvent, KeyboardEvent } from 'react'
-import { todosAtom } from '../../atoms/todo-list';
-import { TodoStatus } from '../../constants/TodoStatus';
-import { ITodoItem } from '../../interfaces/TodoItem';
-import Input from '../Input'
+import { useSetAtom } from 'jotai';
+import React, { KeyboardEvent } from 'react'
 import { v4 } from 'uuid';
-import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  /* margin-bottom: 2rem; */
-`;
+import paperAdd from '@/assets/paper_add.svg';
+import { todosAtom } from '@/atoms/todo-list';
+import { TodoStatus } from '@/constants/TodoStatus';
+
+import Input from '@/components/Input'
 
 const TodoInput = () => {
   const [todo, setTodo] = React.useState('');
@@ -41,7 +38,12 @@ const TodoInput = () => {
         value={todo}
         onChange={setTodo}
         onKeyDown={onKeyDown}
-        placeholder="+ Add a new to-do"
+        placeholder={(
+          <>
+            <img className="icon input-icon" src={paperAdd} alt="+" /> 
+           Add a new to-do"
+          </>
+        )}
       />
     </div>
   )

@@ -10,16 +10,16 @@ const EmptyWrapper = styled.div`
   height: 100%;
 
   > img {
-    height: 300px;
+    height: clamp(15vh,15rem, 40vw);
     width: auto;
   }
 `;
 
 const Empty = () => {
   return (
-    <EmptyWrapper>
-      <img src={emptyImage} alt="empty" />
-    </EmptyWrapper>
+    // <EmptyWrapper>
+    <img src={emptyImage} alt="empty" />
+    // </EmptyWrapper>
   )
 }
 

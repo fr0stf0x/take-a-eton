@@ -28,6 +28,8 @@ const ButtonStyled = styled.button`
 
   &.small {
     padding: .25rem .7rem;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   &.simple {
@@ -38,8 +40,6 @@ const ButtonStyled = styled.button`
   &.danger {
     background-color: #fbc2c2;
     color: #fd3030;
-    width: 2rem;
-    height: 2rem;
   }
 `;
 

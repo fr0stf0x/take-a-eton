@@ -1,28 +1,24 @@
 import React from 'react'
-import { ITodoItem } from '@/interfaces/TodoItem'
-import { TodoItemStyled, RightSideStyled } from './styled';
-import { TodoStatus } from '@/constants/TodoStatus';
-import CheckBox from '../CheckBox';
-import Button from '../Button';
 import { useSetAtom } from 'jotai';
+
+import deleteIcon from '@/assets/trash.svg';
+
+import CheckBox from '@/components/CheckBox';
+import Button from '@/components/Button';
+import { ITodoItem } from '@/interfaces/TodoItem'
+import { TodoStatus } from '@/constants/TodoStatus';
 import { todosAtom } from '@/atoms/todo-list';
+import { toggleTodo } from '@/utils/helpers';
+
+import { TodoItemStyled, RightSideStyled, LeftSideStyled } from './styled';
 
 const TodoItem: React.FC<{ todo: ITodoItem }> = ({ todo }) => {
   const setTodos = useSetAtom(todosAtom);
 
-  const toggleTodo = () => {
-    setTodos((prev) => prev.map((pTodo) => {
+  const pToggleTodo = () => {
+    setTodos((prev) => prev.map(pTodo => {
       if (todo.id === pTodo.id) {
-        const newTodo = {
-          ...pTodo,
-          status: todo.status === TodoStatus.ACTIVE ? TodoStatus.DONE : TodoStatus.ACTIVE
-        };
-
-        if (todo.status === TodoStatus.ACTIVE) {
-          newTodo.doneAt = new Date();
-        }
-
-        return newTodo;
+        return toggleTodo(pTodo);
       }
 
       return pTodo;
@@ -35,22 +31,27 @@ const TodoItem: React.FC<{ todo: ITodoItem }> = ({ todo }) => {
 
   return (
     <TodoItemStyled>
-      <CheckBox
-        checked={todo.status === TodoStatus.DONE}
-        label={todo.title}
-        onChange={toggleTodo}
-      />
-
-      <RightSideStyled>
+      <LeftSideStyled>
+        <CheckBox
+          checked={todo.status === TodoStatus.DONE}
+          label={todo.title}
+          onChange={pToggleTodo}
+        />
         <div className='date-time'>
           <div>
-            <i>{todo.createdAt.toLocaleDateString()}</i>
+            <i>{new Date(todo.createdAt).toLocaleDateString()}</i>
           </div>
           <div>
-            <i>{todo.createdAt.toLocaleTimeString()}</i>
+            <i>{new Date(todo.createdAt).toLocaleTimeString()}</i>
           </div>
         </div>
-        <Button className="small simple danger" onClick={removeTodo}>&#215;</Button>
+      </LeftSideStyled>
+
+      <RightSideStyled>
+        <Button className="small simple danger" onClick={removeTodo}>
+          {/* &#215; */}
+          <img className="icon" src={deleteIcon} alt="x" />
+          </Button>
       </RightSideStyled>
     </TodoItemStyled>
   )

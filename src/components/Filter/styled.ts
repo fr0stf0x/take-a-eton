@@ -37,8 +37,8 @@ export const FilterWrapper = styled.div`
 export const ButtonGroupWrapper = styled.div`
   display: flex;
   align-items: center;
+  margin: 2rem 0 1rem;
 
-  margin: 2rem 0 0;
   > button {
     &:not(:last-child) {
       margin-right: 0.5em;

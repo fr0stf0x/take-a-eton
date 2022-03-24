@@ -1,15 +1,29 @@
-import { useAtomValue } from 'jotai'
+import { useAtomValue, useSetAtom } from 'jotai'
 // import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useTransition, animated } from 'react-spring';
 
-import { filteredAtom } from '@/atoms/todo-list'
+import clock from '@/assets/clock.svg';
+import Button from '@/components/Button';
 import TodoItem from './TodoItem'
-import { TodoListWrapper, TodoListStyled } from './styled';
 import Empty from './Empty';
-import Button from '../Button';
+import { ITodoItem } from '@/interfaces/TodoItem';
+import { filterAtom, filteredAtom, todosAtom } from '@/atoms/todo-list'
+import { toggleTodo } from '@/utils/helpers';
+
+import { TodoListWrapper, TodoListStyled } from './styled';
 
 const TodoList = () => {
   const list = useAtomValue(filteredAtom);
+  const setTodos = useSetAtom(todosAtom);
+  const filter = useAtomValue(filterAtom);
+
+  const toggleTransition = useTransition(!!list.length, {
+    delay: 200,
+    from: { opacity: 0, display: 'none' },
+    enter: { opacity: 1, display: 'flex' },
+    leave: { opacity: 0, display: 'none' },
+    reverse: !list.length,
+  })
 
   const transitions = useTransition(list, {
     keys: (todo) => todo.id,
@@ -19,7 +33,19 @@ const TodoList = () => {
   })
 
   const onClickToggleAll = () => {
-    // TODO
+    setTodos((prev) => {
+      if (filter === 'ALL') {
+        return prev.map(toggleTodo);
+      }
+
+      return prev.reduce((arr: ITodoItem[], todo: ITodoItem) => {
+        if (todo.status === filter) {
+          arr.push(toggleTodo(todo));
+        }
+
+        return arr;
+      }, []);
+    })
   }
 
   return (
@@ -43,7 +69,18 @@ const TodoList = () => {
             })}
           </TransitionGroup>
         )} */}
-          {
+          {toggleTransition((style, isNotEmpty: boolean) =>
+            isNotEmpty ? transitions((style, todo) => (
+              <animated.div className="todo-item" style={style}>
+                <TodoItem todo={todo} />
+              </animated.div>
+            )) : (
+              <animated.div className="empty-list" style={style}>
+                <Empty />
+              </animated.div>
+            )
+          )}
+          {/* {
             !list.length ? (
               <Empty />
             ) :
@@ -52,14 +89,15 @@ const TodoList = () => {
                   <TodoItem todo={todo} />
                 </animated.div>
               ))
-          }
+          } */}
         </TodoListStyled>
       </TodoListWrapper>
       {!!list.length && (
         <Button
-          style={{ alignSelf: 'flex-start', margin: '0rem 0 2rem' }}
           onClick={onClickToggleAll}
+          className="toggle-all"
         >
+          <img className="icon" src={clock} alt="toggle" />
           Toggle All
         </Button>
       )}

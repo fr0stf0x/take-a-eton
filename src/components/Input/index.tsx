@@ -1,5 +1,7 @@
 import React, { ChangeEvent, FC } from 'react'
-import { IInput } from '../../interfaces/Input'
+
+import { IInput } from '@/interfaces/Input'
+
 import { InputWrapper } from './styled'
 
 const Input: FC<IInput> = ({ value, onChange, id, placeholder, onKeyDown }) => {

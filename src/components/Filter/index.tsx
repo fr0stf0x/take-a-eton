@@ -1,9 +1,10 @@
 import React from 'react'
+import { useAtom } from 'jotai';
+
 import { FilterStatus, TodoStatus } from '@/constants/TodoStatus';
+import { filterAtom } from '@/atoms/todo-list';
 
 import { ButtonGroupWrapper, FilterWrapper } from './styled';
-import { useAtom } from 'jotai';
-import { filterAtom } from '@/atoms/todo-list';
 
 const arrStatus: {
   title: string;
@@ -31,8 +32,6 @@ const Filter = () => {
 
   return (
     <FilterWrapper>
-      {/* <button className="toggle-btn">Toggle All</button> */}
-
       <ButtonGroupWrapper>
         {arrStatus.map(({ title, value }) => (
           <button

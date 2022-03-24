@@ -1,10 +1,11 @@
-import { ITodoItem } from './../interfaces/TodoItem';
-import { atom, PrimitiveAtom } from "jotai"
-import { FilterStatus } from '../constants/TodoStatus';
+import { ITodoItem } from '@/interfaces/TodoItem';
+import { atom } from "jotai"
+import { atomWithStorage } from 'jotai/utils';
+import { FilterStatus } from '@/constants/TodoStatus';
 
-const filterAtom = atom<FilterStatus>("ALL");
+const filterAtom = atomWithStorage<FilterStatus>('filterAtom', "ALL");
 
-const todosAtom = atom<ITodoItem[]>([]);
+const todosAtom = atomWithStorage<ITodoItem[]>('todosAtom', []);
 
 const filteredAtom = atom<ITodoItem[]>((get) => {
   const filter = get(filterAtom)

@@ -1,4 +1,4 @@
-import { TodoStatus } from "../constants/TodoStatus";
+import { TodoStatus } from "@/constants/TodoStatus";
 
 export interface ITodoItem {
   id: string;

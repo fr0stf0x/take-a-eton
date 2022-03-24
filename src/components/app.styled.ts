@@ -2,7 +2,6 @@ import { primaryColor } from "@/constants/colors";
 import styled from "styled-components";
 
 export const AppWrapper = styled.div`
-  font-family: 'Quicksand', sans-serif;
   display: flex;
   height: 100vh;
   align-items: center;
@@ -28,4 +27,13 @@ export const AppFrame = styled.div`
     8.4px 12.8px 50.2px -10px rgba(0, 0, 0, 0.069),
     23px 35px 121px -10px rgba(0, 0, 0, 0.1)
   ;
+
+  @media screen and (max-width: 768px) { 
+    width: 80vw;
+  }
+
+  @media screen and (max-width: 425px) { 
+    width: 70vw;
+    padding: 2rem 2rem;
+  }
 `;

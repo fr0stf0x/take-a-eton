@@ -1,5 +1,6 @@
-import { primaryColor, primaryLightColor, secondaryColor } from "@/constants/colors";
 import styled from "styled-components";
+
+import { primaryColor, primaryLightColor, secondaryColor } from "@/constants/colors";
 
 // animation variables
 const animationFunction = 'ease-in-out';
