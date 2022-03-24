@@ -113,6 +113,7 @@ export const LeftSideStyled = styled.div`
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    align-items: flex-start;
     margin-right: 0.5rem;
 
     .date-time {

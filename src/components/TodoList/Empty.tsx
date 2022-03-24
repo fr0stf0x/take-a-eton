@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import emptyImage from '@/assets/empty.png';
+import emptyImage from '@/assets/empty_compressed.png';
 
 const EmptyWrapper = styled.div`
   display: flex;
@@ -23,4 +23,4 @@ const Empty = () => {
   )
 }
 
-export default Empty
+export default Empty;

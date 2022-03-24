@@ -11,6 +11,7 @@ import { filterAtom, filteredAtom, todosAtom } from '@/atoms/todo-list'
 import { toggleTodo } from '@/utils/helpers';
 
 import { TodoListWrapper, TodoListStyled } from './styled';
+import { useCallback } from 'react';
 
 const TodoList = () => {
   const list = useAtomValue(filteredAtom);
@@ -48,6 +49,20 @@ const TodoList = () => {
     })
   }
 
+  const pToggleTodo = useCallback((id: string) => {
+    setTodos((prev) => prev.map(pTodo => {
+      if (id === pTodo.id) {
+        return toggleTodo(pTodo);
+      }
+
+      return pTodo;
+    }));
+  }, [])
+
+  const removeTodo = useCallback((id: string) => {
+    setTodos((prev) => prev.filter((pTodo) => pTodo.id !== id));
+  }, []);
+
   return (
     <>
       <TodoListWrapper>
@@ -72,7 +87,11 @@ const TodoList = () => {
           {toggleTransition((style, isNotEmpty: boolean) =>
             isNotEmpty ? transitions((style, todo) => (
               <animated.div className="todo-item" style={style}>
-                <TodoItem todo={todo} />
+                <TodoItem
+                  todo={todo}
+                  toggleTodo={pToggleTodo}
+                  removeTodo={removeTodo}
+                />
               </animated.div>
             )) : (
               <animated.div className="empty-list" style={style}>
@@ -80,16 +99,6 @@ const TodoList = () => {
               </animated.div>
             )
           )}
-          {/* {
-            !list.length ? (
-              <Empty />
-            ) :
-              transitions((style, todo) => (
-                <animated.div className="todo-item" style={style}>
-                  <TodoItem todo={todo} />
-                </animated.div>
-              ))
-          } */}
         </TodoListStyled>
       </TodoListWrapper>
       {!!list.length && (

@@ -13,9 +13,11 @@ export const CheckBoxWrapper = styled.div`
     right: 9000px;
 
     & + .label-text {
+      min-height: 1.2rem;
       position: relative;
       color: ${primaryColor};
       cursor: pointer;
+      word-break: break-word;
       display: flex;
       padding-left: 2rem;
       justify-content: space-between;
@@ -26,15 +28,20 @@ export const CheckBoxWrapper = styled.div`
       overflow: hidden;
       transition: all ${animationDuration} ${animationFunction};
 
+      > svg {
+        width: 1rem;
+        height: 0.8rem;
+      }
+
       &::after {
         content: "";
         border-radius: .2rem;
         border: 1px solid ${primaryColor};
-        width: 16px;
+        width: 1rem;
         position: absolute;
         left: 0;
         top: 50%;
-        height: 16px;
+        height: 1rem;
         transform: scale(1) translateY(-50%);
         transition: all ${animationDuration} ${animationFunction} ${animationDelay};
       }
@@ -42,7 +49,7 @@ export const CheckBoxWrapper = styled.div`
       .checkmark {
         position: absolute;
         top: 50%;
-        left: 2px;
+        left: 1px;
         transform: translateY(-50%);
         stroke: #c8d4d9;
         fill: none;

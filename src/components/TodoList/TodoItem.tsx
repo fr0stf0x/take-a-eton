@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSetAtom } from 'jotai';
 
 import deleteIcon from '@/assets/trash.svg';
 
@@ -7,26 +6,26 @@ import CheckBox from '@/components/CheckBox';
 import Button from '@/components/Button';
 import { ITodoItem } from '@/interfaces/TodoItem'
 import { TodoStatus } from '@/constants/TodoStatus';
-import { todosAtom } from '@/atoms/todo-list';
-import { toggleTodo } from '@/utils/helpers';
 
 import { TodoItemStyled, RightSideStyled, LeftSideStyled } from './styled';
 
-const TodoItem: React.FC<{ todo: ITodoItem }> = ({ todo }) => {
-  const setTodos = useSetAtom(todosAtom);
+interface ITodoItemProps {
+  todo: ITodoItem;
+  toggleTodo: (id: string) => void;
+  removeTodo: (id: string) => void;
+}
+
+const TodoItem: React.FC<ITodoItemProps> = ({ todo, removeTodo, toggleTodo }) => {
+  // React.useEffect(() => {
+  //   console.log('TodoItem update', todo.id);
+  // });
 
   const pToggleTodo = () => {
-    setTodos((prev) => prev.map(pTodo => {
-      if (todo.id === pTodo.id) {
-        return toggleTodo(pTodo);
-      }
-
-      return pTodo;
-    }));
+    toggleTodo(todo.id);
   }
 
-  const removeTodo = () => {
-    setTodos((prev) => prev.filter((pTodo) => pTodo.id !== todo.id));
+  const pRemoveTodo = () => {
+    removeTodo(todo.id);
   }
 
   return (
@@ -48,10 +47,9 @@ const TodoItem: React.FC<{ todo: ITodoItem }> = ({ todo }) => {
       </LeftSideStyled>
 
       <RightSideStyled>
-        <Button className="small simple danger" onClick={removeTodo}>
-          {/* &#215; */}
+        <Button className="small simple danger" onClick={pRemoveTodo}>
           <img className="icon" src={deleteIcon} alt="x" />
-          </Button>
+        </Button>
       </RightSideStyled>
     </TodoItemStyled>
   )

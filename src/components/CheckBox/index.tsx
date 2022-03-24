@@ -24,7 +24,7 @@ const CheckBox: FC<ICheckBox> = ({ id, label, checked, onChange }) => {
 
       <label htmlFor={actualId} className="label-text">
         {label}
-        <svg width="15px" height="10px" className="checkmark">
+        <svg className="checkmark">
           <polyline points="1,5 6,9 14,1" />
         </svg>
       </label>
