@@ -42,6 +42,8 @@ const TodoList = () => {
       return prev.reduce((arr: ITodoItem[], todo: ITodoItem) => {
         if (todo.status === filter) {
           arr.push(toggleTodo(todo));
+        } else {
+          arr.push(todo);
         }
 
         return arr;
